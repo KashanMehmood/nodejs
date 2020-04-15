@@ -15,7 +15,7 @@
 // console.log(`my name is ${name}`);
 
 // __________________________________________________________________________
-const fs = require('fs');
+// const fs = require('fs');
 // console.log(fs);
 
 // unlink, unlinkSync Methods
@@ -63,3 +63,21 @@ const fs = require('fs');
 // });
 
 // server.listen(3000);
+
+
+//________________________________________Module__________________________________
+
+// error is happening because we did not export am module from calculate.js
+// beacuse we declare a funciton in calculate.js
+
+const cal = require('./calculate');
+
+// console.log(cal);
+
+// cal.add(3,4);
+// cal.sub(10,4);
+// cal.mul(10,4);
+
+cal.calculate.add(3,4);
+cal.calculate.sub(10,4);
+cal.calculate.mul(10,4);
