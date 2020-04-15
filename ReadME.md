@@ -22,4 +22,7 @@ Part # 02
         2.  __filename
         3.  require, module, export
 
+
+Part # 03
+    1.  cannot declare let variable in same scope.
         
