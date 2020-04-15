@@ -13,4 +13,13 @@ nodejs has built in and external package.
 
 minimum npm package is 3v
 
-it doesnot support dom, alert 
+it doesnot support dom, alert
+
+Part # 02
+
+    1.  Global Object of NodeJS
+        1.  __dirname
+        2.  __filename
+        3.  require, module, export
+
+        
