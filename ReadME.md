@@ -25,4 +25,11 @@ Part # 02
 
 Part # 03
     1.  cannot declare let variable in same scope.
+
+Part # 09
+    1.  installation of express
+        1.  npm install express
+
+    2.  whenever we change in node file we need to restart server to Avoid that we use nodemon
+        1.  npm install -g nodemon
         
