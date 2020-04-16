@@ -70,7 +70,7 @@
 // error is happening because we did not export am module from calculate.js
 // beacuse we declare a funciton in calculate.js
 
-const cal = require('./calculate');
+// const cal = require('./calculate');
 
 // console.log(cal);
 
@@ -78,6 +78,19 @@ const cal = require('./calculate');
 // cal.sub(10,4);
 // cal.mul(10,4);
 
-cal.calculate.add(3,4);
-cal.calculate.sub(10,4);
-cal.calculate.mul(10,4);
+// cal.calculate.add(3,4);
+// cal.calculate.sub(10,4);
+// cal.calculate.mul(10,4);
+
+//________________________________________Event__________________________________
+
+// const events = require('events');
+// const event = new events.EventEmitter();
+
+// event.on('eTriggert', () => console.log("Event occur") );
+// event.emit('eTriggert','Kashan Mehmood');
+
+
+// event.on('eTriggert', (e) => console.log(e) );
+// event.emit('eTriggert','Kashan Mehmood');
+
