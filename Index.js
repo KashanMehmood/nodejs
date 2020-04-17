@@ -1,8 +1,8 @@
 // console.log("hello");
 // for (let index = 0; index < 10; index++) {
-    // console.log(index);
-    // alert("Hello");
-    // document.write("hello");
+// console.log(index);
+// alert("Hello");
+// document.write("hello");
 // }
 
 // console.log(__dirname);
@@ -47,7 +47,7 @@
 // const server = http.createServer((request,reponse) => {
 
 //     reponse.setHeader('content-type','text/html');
-    
+
 //     if(request.url == '/'){
 //         reponse.statusCode = 200;
 //         reponse.write('Hello NodeJS');
@@ -96,10 +96,10 @@
 
 //________________________________________Express__________________________________
 
-// const express = require('express');
-// const app = express();
+const express = require('express');
+const app = express();
 
-//________static files
+//_______________________________________static files_____________________________
 
 // app.use('/static', express.static('./public'));
 
@@ -110,7 +110,7 @@
 //     response.sendFile(__dirname + '/image.html');
 // });
 
-//________end static files
+//_______________________________________static files_____________________________
 
 // app.get('/', (request,response) =>{
 //     response.send('Hello World');
@@ -125,5 +125,48 @@
 // });
 
 // console.log("Current path " + __dirname);
+
+
+
+//________________________________Routing Parameter________________________________
+
+app.get('/', (request, response) => {
+    response.send('Hello World ');
+});
+
+// Reuired parameter
+
+// app.get('/user/:userid', (request, response) => {
+//     response.send('Hello user' + request.params.userid);
+// });
+
+// Optional parameter
+
+// app.get('/user/:userid?', (request, response) => {
+
+//     if(request.params.userid != undefined){
+//         response.send('Specific User: ' + request.params.userid);
+//     }else{
+//         response.send('All Users');
+//     }
+// });
+
+// Parameter range "from" to "to"
+
+//- Hyphen notation
+
+app.get('/user/:from-:to', (request, response) => {
+
+    response.send('Routing Params: ' + request.params.from + '-' + request.params.to);
+});
+
+//- Dot notation
+
+app.get('/user/:from.:to', (request, response) => {
+
+    response.send('Routing Params: ' + request.params.from + '.' + request.params.to);
+});
+
+//________________________________Routing Parameter________________________________
 
 app.listen(3000, () => console.log('Server Running at http://localhost:3000/'));
