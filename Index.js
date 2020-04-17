@@ -96,16 +96,34 @@
 
 //________________________________________Express__________________________________
 
-const express = require('express');
-const app = express();
-// console.log(app);
+// const express = require('express');
+// const app = express();
 
-app.get('/', (request,response) =>{
-    response.send('Hello World');
-});
+//________static files
 
-app.get('/user', (request,response) =>{
-    response.send('Hello World ');
-});
+// app.use('/static', express.static('./public'));
+
+// static file load url
+// http://localhost:3000/image/pic.png
+
+// app.get('/checkimage', (request,response) => {
+//     response.sendFile(__dirname + '/image.html');
+// });
+
+//________end static files
+
+// app.get('/', (request,response) =>{
+//     response.send('Hello World');
+// });
+
+// app.get('/user', (request,response) =>{
+//     response.send('Hello World ');
+// });
+
+// app.post('/user', (request,response) =>{
+//     response.send('Hello World post method  ');
+// });
+
+// console.log("Current path " + __dirname);
 
 app.listen(3000, () => console.log('Server Running at http://localhost:3000/'));
