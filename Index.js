@@ -155,18 +155,77 @@ app.get('/', (request, response) => {
 
 //- Hyphen notation
 
-app.get('/user/:from-:to', (request, response) => {
+// app.get('/user/:from-:to', (request, response) => {
 
-    response.send('Routing Params: ' + request.params.from + '-' + request.params.to);
-});
+//     response.send('Routing Params: ' + request.params.from + '-' + request.params.to);
+// });
 
-//- Dot notation
+// //- Dot notation
 
-app.get('/user/:from.:to', (request, response) => {
+// app.get('/user/:from.:to', (request, response) => {
 
-    response.send('Routing Params: ' + request.params.from + '.' + request.params.to);
-});
+//     response.send('Routing Params: ' + request.params.from + '.' + request.params.to);
+// });
 
 //________________________________Routing Parameter________________________________
+
+//____________________________________Middleware____________________________________
+
+const myMiddleware = (request, response, next) => {
+
+    // Example # 1
+    // if(request.url == '/user'){
+
+    //     console.log("Middleware Activated");
+    //     next();
+    // }else{
+    //     response.send('Wrong Route');
+    // }
+
+
+
+    // console.log(request.params.name);
+
+    //- Default ExpressJS way
+
+    // request.myMiddleware = Date.now();
+    // console.log('Time:', Date.now())
+
+    //- Default JS way
+    // request.myMiddleware = Date();
+    // console.log(request.myMiddleware);
+
+
+    // Example # 2
+    if (request.params.name == 'kashan') {
+
+        console.log('Middleware Activated, Params name: ' + request.params.name);
+    } else {
+        response.send('Wrong Route');
+    }
+
+    next();
+}
+
+// app.use(myMiddleware);
+
+// app.get('/user', (request, response) => {
+
+//     response.send('Hello User' + request.url);
+// });
+
+// app.get('/about', myMiddleware, (request, response) => {
+
+//     response.send('Hello About');
+// });
+
+app.get('/users/:name', myMiddleware, (request, response) => {
+
+    response.send('Hello User check: ' + request.myMiddleware);
+});
+
+
+
+//____________________________________Middleware____________________________________
 
 app.listen(3000, () => console.log('Server Running at http://localhost:3000/'));
