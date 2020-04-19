@@ -219,11 +219,11 @@ const myMiddleware = (request, response, next) => {
 //     response.send('Hello About');
 // });
 
+request.myMiddleware = Date.now();
 app.get('/users/:name', myMiddleware, (request, response) => {
 
     response.send('Hello User check: ' + request.myMiddleware);
 });
-
 
 
 //____________________________________Middleware____________________________________
