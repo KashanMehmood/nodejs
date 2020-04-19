@@ -130,9 +130,9 @@ const app = express();
 
 //________________________________Routing Parameter________________________________
 
-app.get('/', (request, response) => {
-    response.send('Hello World ');
-});
+// app.get('/', (request, response) => {
+//     response.send('Hello World ');
+// });
 
 // Reuired parameter
 
@@ -171,7 +171,7 @@ app.get('/', (request, response) => {
 
 //____________________________________Middleware____________________________________
 
-const myMiddleware = (request, response, next) => {
+// const myMiddleware = (request, response, next) => {
 
     // Example # 1
     // if(request.url == '/user'){
@@ -197,15 +197,15 @@ const myMiddleware = (request, response, next) => {
 
 
     // Example # 2
-    if (request.params.name == 'kashan') {
+//     if (request.params.name == 'kashan') {
 
-        console.log('Middleware Activated, Params name: ' + request.params.name);
-    } else {
-        response.send('Wrong Route');
-    }
+//         console.log('Middleware Activated, Params name: ' + request.params.name);
+//     } else {
+//         response.send('Wrong Route');
+//     }
 
-    next();
-}
+//     next();
+// }
 
 // app.use(myMiddleware);
 
@@ -219,13 +219,38 @@ const myMiddleware = (request, response, next) => {
 //     response.send('Hello About');
 // });
 
-request.myMiddleware = Date.now();
-app.get('/users/:name', myMiddleware, (request, response) => {
+// request.myMiddleware = Date.now();
+// app.get('/users/:name', myMiddleware, (request, response) => {
 
-    response.send('Hello User check: ' + request.myMiddleware);
-});
-
+//     response.send('Hello User check: ' + request.myMiddleware);
+// });
 
 //____________________________________Middleware____________________________________
+//____________________________________Template Engine Pug____________________________________
+
+
+//__Template Engine Pug
+
+// app.set('views', './public/pages');
+// app.set('view engine', 'pug');
+
+// app.get('/', function (request, response) {
+//     response.render('index', { title: 'Hey', message: 'Hello there!' })
+//   })
+
+//__Template Engine Pug
+
+//__Template Engine Twig
+
+app.set('views', './public/pages');
+app.set('view engine', 'twig');
+ 
+app.get('/', function (request, response) {
+    response.render('endex', { title: 'Hey', message: 'Hello there!' })
+})
+
+//__Template Engine Pug
+
+//____________________________________Template Engine Pug____________________________________
 
 app.listen(3000, () => console.log('Server Running at http://localhost:3000/'));

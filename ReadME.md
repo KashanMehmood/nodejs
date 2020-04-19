@@ -32,4 +32,7 @@ Part # 09
 
     2.  whenever we change in node file we need to restart server to Avoid that we use nodemon
         1.  npm install -g nodemon
-        
+
+Part # 13
+    1.  npm install pug
+    2.  npm install twig
