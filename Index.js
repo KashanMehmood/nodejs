@@ -96,8 +96,8 @@
 
 //________________________________________Express__________________________________
 
-const express = require('express');
-const app = express();
+// const express = require('express');
+// const app = express();
 
 //_______________________________________static files_____________________________
 
@@ -242,12 +242,28 @@ const app = express();
 
 //__Template Engine Twig
 
-app.set('views', './public/pages');
+const express = require('express');
+const bodyParser = require('body-parser');
+
+const app = express();
+
+app.set('views', __dirname+'/public/pages/');
 app.set('view engine', 'twig');
+
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }));
+
+// parse application/json
+app.use(bodyParser.json());
  
-app.get('/', function (request, response) {
-    response.render('endex', { title: 'Hey', message: 'Hello there!' })
-})
+app.get('/', (request, response) => {
+    response.render('form');
+});
+
+app.post('/', (request, response) => {
+    console.log(request.body);
+    response.render('about',{ fname:request.body.fname, lname:request.body.lname });
+});
 
 //__Template Engine Pug
 
