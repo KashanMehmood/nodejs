@@ -27,11 +27,10 @@
 // Synchronous call back
 // it will print File content first then log message.
 
-
 // __________________________________________________________________________
 // const fs = require('fs');
-// fs.readFile('ReadME.md', function(error, response) {
-//     console.log(response.toString());
+// fs.readFile('ReadME.md', function(error, res) {
+//     console.log(res.toString());
 //     // res.writeHead(200, {'Content-Type': 'text/html'});
 //     // res.write(data);
 //     // res.end();
@@ -44,17 +43,17 @@
 
 // __________________________________________________________________________
 // const http = require('http');
-// const server = http.createServer((request,reponse) => {
+// const server = http.createServer((req,reponse) => {
 
 //     reponse.setHeader('content-type','text/html');
 
-//     if(request.url == '/'){
+//     if(req.url == '/'){
 //         reponse.statusCode = 200;
 //         reponse.write('Hello NodeJS');
-//         reponse.write("<div>Current Url " + request.url + "</div>");
-//     }else if(request.url == '/hello'){
+//         reponse.write("<div>Current Url " + req.url + "</div>");
+//     }else if(req.url == '/hello'){
 //         reponse.write("hello url");
-//         reponse.write("<div>Current Url " + request.url + "</div>");
+//         reponse.write("<div>Current Url " + req.url + "</div>");
 //     }else{
 //         reponse.write("wrong url");
 //     }
@@ -63,7 +62,6 @@
 // });
 
 // server.listen(3000);
-
 
 //________________________________________Module__________________________________
 
@@ -90,7 +88,6 @@
 // event.on('eTriggert', () => console.log("Event occur") );
 // event.emit('eTriggert','Kashan Mehmood');
 
-
 // event.on('eTriggert', (e) => console.log(e) );
 // event.emit('eTriggert','Kashan Mehmood');
 
@@ -106,48 +103,46 @@
 // static file load url
 // http://localhost:3000/image/pic.png
 
-// app.get('/checkimage', (request,response) => {
-//     response.sendFile(__dirname + '/image.html');
+// app.get('/checkimage', (req,res) => {
+//     res.sendFile(__dirname + '/image.html');
 // });
 
 //_______________________________________static files_____________________________
 
-// app.get('/', (request,response) =>{
-//     response.send('Hello World');
+// app.get('/', (req,res) =>{
+//     res.send('Hello World');
 // });
 
-// app.get('/user', (request,response) =>{
-//     response.send('Hello World ');
+// app.get('/user', (req,res) =>{
+//     res.send('Hello World ');
 // });
 
-// app.post('/user', (request,response) =>{
-//     response.send('Hello World post method  ');
+// app.post('/user', (req,res) =>{
+//     res.send('Hello World post method  ');
 // });
 
 // console.log("Current path " + __dirname);
 
-
-
 //________________________________Routing Parameter________________________________
 
-// app.get('/', (request, response) => {
-//     response.send('Hello World ');
+// app.get('/', (req, res) => {
+//     res.send('Hello World ');
 // });
 
 // Reuired parameter
 
-// app.get('/user/:userid', (request, response) => {
-//     response.send('Hello user' + request.params.userid);
+// app.get('/user/:userid', (req, res) => {
+//     res.send('Hello user' + req.params.userid);
 // });
 
 // Optional parameter
 
-// app.get('/user/:userid?', (request, response) => {
+// app.get('/user/:userid?', (req, res) => {
 
-//     if(request.params.userid != undefined){
-//         response.send('Specific User: ' + request.params.userid);
+//     if(req.params.userid != undefined){
+//         res.send('Specific User: ' + req.params.userid);
 //     }else{
-//         response.send('All Users');
+//         res.send('All Users');
 //     }
 // });
 
@@ -155,53 +150,50 @@
 
 //- Hyphen notation
 
-// app.get('/user/:from-:to', (request, response) => {
+// app.get('/user/:from-:to', (req, res) => {
 
-//     response.send('Routing Params: ' + request.params.from + '-' + request.params.to);
+//     res.send('Routing Params: ' + req.params.from + '-' + req.params.to);
 // });
 
 // //- Dot notation
 
-// app.get('/user/:from.:to', (request, response) => {
+// app.get('/user/:from.:to', (req, res) => {
 
-//     response.send('Routing Params: ' + request.params.from + '.' + request.params.to);
+//     res.send('Routing Params: ' + req.params.from + '.' + req.params.to);
 // });
 
 //________________________________Routing Parameter________________________________
 
 //____________________________________Middleware____________________________________
 
-// const myMiddleware = (request, response, next) => {
+// const myMiddleware = (req, res, next) => {
 
-    // Example # 1
-    // if(request.url == '/user'){
+// Example # 1
+// if(req.url == '/user'){
 
-    //     console.log("Middleware Activated");
-    //     next();
-    // }else{
-    //     response.send('Wrong Route');
-    // }
+//     console.log("Middleware Activated");
+//     next();
+// }else{
+//     res.send('Wrong Route');
+// }
 
+// console.log(req.params.name);
 
+//- Default ExpressJS way
 
-    // console.log(request.params.name);
+// req.myMiddleware = Date.now();
+// console.log('Time:', Date.now())
 
-    //- Default ExpressJS way
+//- Default JS way
+// req.myMiddleware = Date();
+// console.log(req.myMiddleware);
 
-    // request.myMiddleware = Date.now();
-    // console.log('Time:', Date.now())
+// Example # 2
+//     if (req.params.name == 'kashan') {
 
-    //- Default JS way
-    // request.myMiddleware = Date();
-    // console.log(request.myMiddleware);
-
-
-    // Example # 2
-//     if (request.params.name == 'kashan') {
-
-//         console.log('Middleware Activated, Params name: ' + request.params.name);
+//         console.log('Middleware Activated, Params name: ' + req.params.name);
 //     } else {
-//         response.send('Wrong Route');
+//         res.send('Wrong Route');
 //     }
 
 //     next();
@@ -209,33 +201,32 @@
 
 // app.use(myMiddleware);
 
-// app.get('/user', (request, response) => {
+// app.get('/user', (req, res) => {
 
-//     response.send('Hello User' + request.url);
+//     res.send('Hello User' + req.url);
 // });
 
-// app.get('/about', myMiddleware, (request, response) => {
+// app.get('/about', myMiddleware, (req, res) => {
 
-//     response.send('Hello About');
+//     res.send('Hello About');
 // });
 
-// request.myMiddleware = Date.now();
-// app.get('/users/:name', myMiddleware, (request, response) => {
+// req.myMiddleware = Date.now();
+// app.get('/users/:name', myMiddleware, (req, res) => {
 
-//     response.send('Hello User check: ' + request.myMiddleware);
+//     res.send('Hello User check: ' + req.myMiddleware);
 // });
 
 //____________________________________Middleware____________________________________
 //____________________________________Template Engine Pug____________________________________
-
 
 //__Template Engine Pug
 
 // app.set('views', './public/pages');
 // app.set('view engine', 'pug');
 
-// app.get('/', function (request, response) {
-//     response.render('index', { title: 'Hey', message: 'Hello there!' })
+// app.get('/', function (req, res) {
+//     res.render('index', { title: 'Hey', message: 'Hello there!' })
 //   })
 
 //__Template Engine Pug
@@ -244,10 +235,13 @@
 
 const express = require('express');
 const bodyParser = require('body-parser');
-
 const app = express();
 
-app.set('views', __dirname+'/public/pages/');
+const { check, validationResult } = require('express-validator');
+const { matchedData, sanitize } = require('express-validator');
+const { body } = require('express-validator');
+
+app.set('views', __dirname + '/public/pages/');
 app.set('view engine', 'twig');
 
 // parse application/x-www-form-urlencoded
@@ -255,18 +249,49 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 // parse application/json
 app.use(bodyParser.json());
- 
-app.get('/', (request, response) => {
-    response.render('form');
+
+app.get('/', (req, res) => {
+  res.render('form')
 });
 
-app.post('/', (request, response) => {
-    console.log(request.body);
-    response.render('about',{ fname:request.body.fname, lname:request.body.lname });
-});
+app.post(
+  '/',
+  [
+    check('fname', 'Error Occur in First Name').trim().isLength({ min: 5 }),
+    check('lname', 'Error Occur in Last Name').trim().isLength({ min: 5 }),
+    check('password', 'Error Occur in Password Length').trim().isLength({ min: 5 }),
+    check('cpassword').custom((value, { req }) => {
+
+      if (value !== req.body.password) {
+        throw new Error('Password confirmation is incorrect');
+      }
+
+      return true;
+    })
+
+  ],
+  (req, res) => {
+
+    const errors = validationResult(req)
+
+    if (!errors.isEmpty()) {
+
+      const user = matchedData(req);
+      res.render('form', { errors: errors.mapped(), user: user });
+      console.log(user);
+      
+
+    } else {
+      // mapData: Returns an object of data that express-validator has validated or sanitized.
+      const user = matchedData(req);
+      res.render('about', { user: user });
+    }
+
+  },
+);
 
 //__Template Engine Pug
 
 //____________________________________Template Engine Pug____________________________________
 
-app.listen(3000, () => console.log('Server Running at http://localhost:3000/'));
+app.listen(3000, () => console.log('Server Running at http://localhost:3000/'))

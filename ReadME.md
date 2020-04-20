@@ -39,3 +39,11 @@ Part # 13
 
 Part # 14
     1.  npm install body-parser
+
+Part # 15
+    1.  npm install express-validator
+    2.  https://www.w3jar.com/express-js-validate-form-data-using-express-validator/
+
+    3.  https://express-validator.github.io/docs/matched-data-api.html
+    4.  https://stackoverflow.com/questions/51259708/express-validator-custom-password-validator-cannot-read-property-of-undefined
+    

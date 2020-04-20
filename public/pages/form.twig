@@ -1,18 +1,45 @@
-<html >
-<head>
-  <title></title>
-</head>
+<html>
+	<head>
+		<title></title>
+	</head>
 
-<body>
-    
-<form method="post" action="/">
-  <label for="fname">First name:</label><br>
-  <input type="text" name="fname" ><br>
-  
-  <label for="lname">Last name:</label><br>
-  <input type="text" name="lname" ><br><br>
-  <input type="submit" value="Submit">
-</form> 
+	<body>
+ 
+		<form method="post" action="/">
 
-</body>
+			<label for="fname">First name:</label><br/>
+			<input type="text" name="fname" value="{{ user.fname }}" /><br/>
+			<p>
+				{% if errors %}
+					{{ errors.fname.msg }}
+				{% endif %}
+			</p>
+
+			<label for="lname">Last name:</label><br/>
+			<input type="text" name="lname" value="{{ user.lname }}" /><br/><br/>
+			<p>
+				{% if errors %}
+					{{ errors.fname.msg }}
+				{% endif %}
+			</p>
+
+			<label for="password">Password:</label><br/>
+			<input type="text" name="password" value="{{ user.password }}" /><br/><br/>
+			<p>
+				{% if errors %}
+					{{ errors.password.msg }}
+				{% endif %}
+			</p>
+
+			<label for="cpassword">Confirm Password:</label><br/>
+			<input type="text" name="cpassword"/><br/><br/>
+			<p>
+				{% if errors %}
+					{{ errors.cpassword.msg }}
+				{% endif %}
+			</p>
+
+			<input type="submit" value="Submit"/>
+		</form>
+	</body>
 </html>
